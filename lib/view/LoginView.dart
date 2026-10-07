@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'RegisterView.dart'; 
+
+import 'RegisterView.dart';
 import 'AccountRecoveryView.dart';
 
 class LoginView extends StatelessWidget {
@@ -15,10 +16,7 @@ class LoginView extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF071835),
-              Color(0xFF0A2A55),
-            ],
+            colors: [Color(0xFF071835), Color(0xFF0A2A55)],
           ),
         ),
         child: Padding(
@@ -26,11 +24,14 @@ class LoginView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               // --- Titulo Login ---
               const Text(
                 'Login',
-                style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 40),
 
@@ -60,7 +61,7 @@ class LoginView extends StatelessWidget {
               // --- Senha ---
               TextField(
                 obscureText: true,
-                style: const TextStyle(color: Colors.white), 
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Senha',
                   labelStyle: const TextStyle(color: Colors.white70),
@@ -88,7 +89,10 @@ class LoginView extends StatelessWidget {
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
                     elevation: 5,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 15,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -96,15 +100,18 @@ class LoginView extends StatelessWidget {
                   onPressed: () {
                     // verificação de login
                   },
-                  child: const Text('Entrar', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    'Entrar',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
 
               const SizedBox(height: 30), // Espaço antes da seção de cadastro
-
               // --- Esqueceu Senha ---
               Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Centraliza os elementos na horizontal
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // Centraliza os elementos na horizontal
                 children: [
                   const Text(
                     'Esqueceu a senha? ',
@@ -115,7 +122,9 @@ class LoginView extends StatelessWidget {
                       // pagina de recuperação de senha
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const AccountRecoveryView()), 
+                        MaterialPageRoute(
+                          builder: (context) => const AccountRecoveryView(),
+                        ),
                       );
                     },
                     style: TextButton.styleFrom(
@@ -150,7 +159,9 @@ class LoginView extends StatelessWidget {
                       // CORREÇÃO: Removido o 'const' antes de RegisterView()
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const RegisterView()), 
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterView(),
+                        ),
                       );
                     },
                     style: TextButton.styleFrom(
