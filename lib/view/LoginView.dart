@@ -101,6 +101,36 @@ class LoginView extends StatelessWidget {
 
               const SizedBox(height: 30), // Espaço antes da seção de cadastro
 
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Centraliza os elementos na horizontal
+                children: [
+                  const Text(
+                    'Esqueceu a senha? ',
+                    style: TextStyle(color: Colors.white70, fontSize: 15),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // pagina de cadastro
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: const Text(
+                      'Recuperar',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 10),
+
               // --- Cadastro ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.center, // Centraliza os elementos na horizontal
@@ -111,7 +141,7 @@ class LoginView extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // pagina de cadastro
+                      // chamada ada pagina de cadastro
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
@@ -129,6 +159,7 @@ class LoginView extends StatelessWidget {
                   ),
                 ],
               ),
+
 
 
             ],
