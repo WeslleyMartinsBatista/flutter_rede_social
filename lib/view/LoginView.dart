@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class loginView extends StatelessWidget {
-  const loginView({super.key});
+// Dica: Por convenção no Flutter, usamos CamelCase para nomes de classes (LoginView)
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,49 +20,27 @@ class loginView extends StatelessWidget {
             ],
           ),
         ),
-
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
+              // --- Titulo Login ---
               const Text(
-                'Bem-vindo!',
+                'Login',
                 style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 40),
 
               // --- Email ---
               TextField(
-                keyboardType: TextInputType.emailAddress, // permite '@'
-                style: const TextStyle(color: Colors.white), // cor do texto
+                keyboardType: TextInputType.emailAddress,
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'E-mail',
-                  labelStyle: const TextStyle(color: Colors.white70), // tamanho do texto
-                  prefixIcon: const Icon(Icons.email, color: Colors.white70), // ícone de carta no inicio
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12), // borda arrendondada
-                    borderSide: const BorderSide(color: Colors.white30), // borda quando desativado
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12), // borda arrendondada
-                    borderSide: const BorderSide(color: Colors.blue), // borda quando ativado
-                  ),
-                  filled: true,
-                  fillColor: Colors.white.withValues(alpha: 0.01), // fundo quase transparente
-                ),
-              ),
-
-              const SizedBox(height: 20), // gap vertical entre os textfield
-
-              // --- Senha ---
-              TextField(
-                obscureText: true, // Oculta o texto digitado (mostra bolinhas)
-                style: const TextStyle(color: Colors.white), 
-                decoration: InputDecoration(
-                  labelText: 'Senha',
-                  labelStyle: const TextStyle(color: Colors.white70),// tamanho do texto
-                  prefixIcon: const Icon(Icons.lock, color: Colors.white70), // ícone de cadeado no inicio
+                  labelStyle: const TextStyle(color: Colors.white70),
+                  prefixIcon: const Icon(Icons.email, color: Colors.white70),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.white30),
@@ -74,6 +53,84 @@ class loginView extends StatelessWidget {
                   fillColor: Colors.white.withValues(alpha: 0.01),
                 ),
               ),
+
+              const SizedBox(height: 20),
+
+              // --- Senha ---
+              TextField(
+                obscureText: true,
+                style: const TextStyle(color: Colors.white), 
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  labelStyle: const TextStyle(color: Colors.white70),
+                  prefixIcon: const Icon(Icons.lock, color: Colors.white70),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.white30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.blue),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white.withValues(alpha: 0.01),
+                ),
+              ),
+
+              const SizedBox(height: 30),
+
+              // --- Botão Entrar ---
+              SizedBox(
+                width: double.infinity, //ocupar toda a largura disponível
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    elevation: 5,
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    // verificação de login
+                  },
+                  child: const Text('Entrar', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                ),
+              ),
+
+              const SizedBox(height: 30), // Espaço antes da seção de cadastro
+
+              // --- Cadastro ---
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Centraliza os elementos na horizontal
+                children: [
+                  const Text(
+                    'Não tem uma conta? ',
+                    style: TextStyle(color: Colors.white70, fontSize: 15),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // pagina de cadastro
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: const Text(
+                      'Cadastrar-se',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+
             ],
           ),
         ),

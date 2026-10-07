@@ -12,7 +12,7 @@ class Flutter_Rede_Social extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, 
-      home: loginView(), 
+      home: const LoginView(), 
     );
   }
 }
