@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'RegisterView.dart'; 
 
-// Dica: Por convenção no Flutter, usamos CamelCase para nomes de classes (LoginView)
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
@@ -101,6 +101,7 @@ class LoginView extends StatelessWidget {
 
               const SizedBox(height: 30), // Espaço antes da seção de cadastro
 
+              // --- Esqueceu Senha ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.center, // Centraliza os elementos na horizontal
                 children: [
@@ -110,7 +111,7 @@ class LoginView extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // pagina de cadastro
+                      // pagina de recuperação de senha
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
@@ -133,7 +134,7 @@ class LoginView extends StatelessWidget {
 
               // --- Cadastro ---
               Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Centraliza os elementos na horizontal
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Não tem uma conta? ',
@@ -141,7 +142,11 @@ class LoginView extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // chamada ada pagina de cadastro
+                      // CORREÇÃO: Removido o 'const' antes de RegisterView()
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterView()), 
+                      );
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
