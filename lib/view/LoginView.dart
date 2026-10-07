@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'RegisterView.dart'; 
+import 'AccountRecoveryView.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -112,6 +113,10 @@ class LoginView extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // pagina de recuperação de senha
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AccountRecoveryView()), 
+                      );
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
