@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../controller/LoginController.dart'; // Ajuste o caminho se necessário
-import 'RegisterView.dart';
+import '../controller/LoginController.dart'; // Ajuste o caminho conforme o seu projeto
 import 'AccountRecoveryView.dart';
+import 'Homeview.dart';
+import 'RegisterView.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -16,16 +17,22 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
 
+  // Nodes de foco para controlar o cursor via teclado
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _senhaFocusNode = FocusNode();
+
   @override
   void dispose() {
     _controller.dispose();
     _emailController.dispose();
     _senhaController.dispose();
+    _emailFocusNode.dispose();
+    _senhaFocusNode.dispose();
     super.dispose();
   }
 
   void _executarLogin() async {
-    FocusScope.of(context).unfocus(); // Fecha o teclado
+    FocusScope.of(context).unfocus(); // Fecha o teclado temporariamente
 
     final sucesso = await _controller.fazerLogin(
       _emailController.text,
@@ -39,11 +46,18 @@ class _LoginViewState extends State<LoginView> {
         SnackBar(
           content: Text('Bem-vindo(a), ${usuario?.nome}!'),
           backgroundColor: Colors.green,
+          duration: const Duration(seconds: 2),
         ),
       );
 
-      // TODO: Redirecionar para a tela inicial / HomeView
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeView()));
+      // Redireciona para a HomeView
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Homeview()),
+      );
+    } else if (mounted) {
+      // Caso dê erro, retorna o foco para o campo de e-mail
+      FocusScope.of(context).requestFocus(_emailFocusNode);
     }
   }
 
@@ -115,7 +129,13 @@ class _LoginViewState extends State<LoginView> {
                 // --- Email ---
                 TextField(
                   controller: _emailController,
+                  focusNode: _emailFocusNode,
                   keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  onSubmitted: (_) {
+                    // Ao pressionar Enter no e-mail, passa o foco para a senha
+                    FocusScope.of(context).requestFocus(_senhaFocusNode);
+                  },
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: 'E-mail',
@@ -139,7 +159,13 @@ class _LoginViewState extends State<LoginView> {
                 // --- Senha ---
                 TextField(
                   controller: _senhaController,
+                  focusNode: _senhaFocusNode,
                   obscureText: true,
+                  textInputAction: TextInputAction.done,
+                  onSubmitted: (_) {
+                    // Ao pressionar Enter na senha, executa o login
+                    _executarLogin();
+                  },
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: 'Senha',
