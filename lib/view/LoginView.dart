@@ -23,6 +23,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void dispose() {
+    //controllers do flutter - comunidade
     _controller.dispose();
     _emailController.dispose();
     _senhaController.dispose();
