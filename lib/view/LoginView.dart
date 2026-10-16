@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../controller/LoginController.dart'; // Ajuste o caminho conforme o seu projeto
+import '../controller/LoginController.dart';
 import 'AccountRecoveryView.dart';
 import 'HomeView.dart';
 import 'RegisterView.dart';
