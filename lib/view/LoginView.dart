@@ -54,7 +54,7 @@ class _LoginViewState extends State<LoginView> {
       // Redireciona para a HomeView
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Homeview()),
+        MaterialPageRoute(builder: (context) => HomeView()),
       );
     } else if (mounted) {
       // Caso dê erro, retorna o foco para o campo de e-mail

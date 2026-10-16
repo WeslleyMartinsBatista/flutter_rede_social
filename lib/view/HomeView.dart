@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_mobile/view/ListaConversaView.dart';
 
-class Homeview extends StatefulWidget {
-  const Homeview({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<Homeview> createState() => _HomeviewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeviewState extends State<Homeview> {
+class _HomeViewState extends State<HomeView> {
   int _currentIndex = 0;
 
   // Lista com o conteúdo de cada aba adaptada ao novo estilo
